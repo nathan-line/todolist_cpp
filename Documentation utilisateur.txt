@@ -1,0 +1,46 @@
+Ce programme est un programme de todo-list, qui permet de créer et gérer une liste de tâches à effectuer. 
+
+La todolist est stockée en mémoire dans un document de type csv, du nom de "ToDoList.csv".
+Ce stockage n'a pas pour vocation d'être directement modifié par l'utilisateur.
+
+Une tâche se décompose selon la forme suivante : Id;titre;description;creation;cloture;status;avancement;priorite;commentaire.
+Id : identifiant unique, qui correspond au rang de création dans la todo-list. Type int
+Titre, description, creation, cloture, status, priorite, commentaire : Variables de la tâche. Type string.
+Avancement : progression de l'utilisateur dans la tâche, entre 0 et 100. Type int.
+
+Les commandes sur les tâches sont les suivantes :
+Les parties entre parenthèses (...) sont optionnelles. Le fonctionnement avec et sans ces parties est détaillé.
+Dans les commandes, Entier est un int à définir par l'utilisateur, et les éléments de type "Mon Titre" des strings, également à définir par l'utilisateur. 
+
+- ./todo list (--priority MaPriorité):
+Affiche l'ensemble de la todolist. 
+Lorsqu'une priorité est précisée, affiche les éléments de la todolist avec la priorité demandée. 
+
+-./todo create --title "Mon Titre" --description "Ma Description" (--priority MaPriorite) :
+Créé une nouvelle tâche à la fin de la todolist, avec le titre "Mon Titre", la description "Ma Description" et la priorité "Mapriorite".
+Si aucune priorité n'est précisée, elle est mise par défaut sur "normale".
+
+./todo display --id Entier:
+Affiche la tâche avec l'identifiant Entier. 
+
+./todo close --id Entier :
+Ferme la tâche avec l'identifiant Entier : fait donc passer son statut au statut "fermée".
+
+./todo modify --id Entier --choix1 "Valeur1" (--choix2 "Valeur2" --choix3 "Valeur3"):
+les choixi sont à choisir entre "title", "description" et "priority", et peuvent être entre 1 et 3.
+Cela modifie le titre, la description et/ou la description de la tâche avec l'identifiant Entier.
+
+./todo progress --id Entier --percent Pourcentage:
+Modifie l'avancement de la tâche d'identifier Entier pour le mettre à Pourcentage.
+Pourcentage est un entier entre 0 et 100. Une utilisation de la commande avec un pourcentage différent renvoit une erreur.
+
+./todo comment --id Entier --text "Mon commentaire":
+Ajoute un commentaire "Mon commentaire" à la tâche d'identifiant Entier.
+
+./todo remove --id Entier:
+Supprime la tâche d'identifiant Entier. Met à jour les identifiants des autres tâches. 
+
+./todo clear :
+Supprime toutes les tâches de la todo-list. 
+Un message de vérification est retourné, et l'opération est effectuée quand l'utilisateur valide son choix avec "Y".
+

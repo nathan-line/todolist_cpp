@@ -61,10 +61,10 @@ class tache {
     void changement_tache(string element, string NewValue){
         if (element == "--title")
             titre = NewValue;
-        if (element == "--priority")
+        else if (element == "--priority")
             priorite = NewValue;
-        if (element == "--description")
-            description == NewValue;
+        else if (element == "--description")
+            description = NewValue;
     }
     
     void ajout_commentaire(string a){
@@ -182,8 +182,9 @@ class todolist{
 
 
     void remove(int id){
-        ensemble_des_taches.erase(ensemble_des_taches.begin() + id) ;
+        ensemble_des_taches.erase(ensemble_des_taches.begin() + id) ; 
         for (int i = id; i<ensemble_des_taches.size(); i++)
+            // Mise à jour des identifiants des autres tâches.
             ensemble_des_taches[i].ID --;
     }
 

@@ -1,0 +1,36 @@
+// On part d'une TodoList vide.
+
+g++ todo_sst.cpp -o todo
+
+./todo list //liste vide 
+
+./todo create --title Titre0 --description "Description tache 0" --priority haute
+
+//test de la création sans priorité
+./todo create --title Titre1 --description "Description tache 1"
+
+./todo create --title Titre2 --description "Description tache 2" --priority haute
+
+./todo list // Il y a bien la date de création, correspondant à la date du jour.
+./todo list --priority haute
+./todo list haute //renvoie "Commande incorrecte"
+
+./todo close --id 1 // fait passer au statut fermé, et met la date de fermeture.
+./todo display --id 1
+
+./todo modify --id 2 --description "Nouvelle description tache 2" --priority basse
+./todo display --id 2
+
+./todo remove --id 2
+./todo list
+
+./todo progress --id 0 --percent 10
+
+./todo comment --id 0 --text "Commentaire tache 0."
+./todo comment --id 0 --text "Autre commentaire."
+./todo display --id 0
+
+./todo clear
+eazad
+Y
+./todo list

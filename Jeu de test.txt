@@ -1,4 +1,4 @@
-// On part d'une TodoList vide.
+// On part d'une TodoList vide. Les commandes sont mises pour une utilisation avec windows sous WSL.
 
 g++ todo_sst.cpp -o todo
 
@@ -15,16 +15,37 @@ g++ todo_sst.cpp -o todo
 ./todo list --priority haute
 ./todo list haute //renvoie "Commande incorrecte"
 
-./todo close --id 1 // fait passer au statut fermé, et met la date de fermeture.
-./todo display --id 1
+//test des sous-tâches : 
+./todo add --id 1 --title "Sous tache 0 de 1" --description "Desc10"
+./todo add --id 1 --title "Sous tache 1 de 1" --description "Desc11"
 
-./todo modify --id 2 --description "Nouvelle description tache 2" --priority basse
-./todo display --id 2
+./todo add --id 0 --title "Sous tache 0 de 0" --description "Desc00" // Les id changent 
 
-./todo remove --id 2
+//test de l'impossibilité d'une sous-tâche de sous-tâche.
+./todo add --id 3 --title "test" --description "test" // les id ont changés, 3 est la sous tâche 0 de 1.
+
+./todo close --id 5 // fait passer au statut fermé, et met la date de fermeture.
+./todo display --id 5
+
+./todo close --id 0 // Fermer une tâche ferme toutes ses sous-tâches.
 ./todo list
 
-./todo progress --id 0 --percent 10
+./todo modify --id 5 --description "Nouvelle description tache 2" --priority basse
+./todo display --id 5
+
+./todo modify --id 2 --priority basse // Se répercute à la sous-tâche*
+./todo list
+
+./todo modify --id 3 --priority haute // Impossible
+
+./todo remove --id 0
+./todo list // On vérifie que les identifiants se sont bien mis à jour.
+
+/todo remove --id 1 // test du remove sur une sous-tâche.
+./todo list
+
+./todo progress --id 0 --percent 150 // test du retour d'erreur
+./todo progress --id 0 --percent 10 // Met à jour le statut
 
 ./todo comment --id 0 --text "Commentaire tache 0."
 ./todo comment --id 0 --text "Autre commentaire."

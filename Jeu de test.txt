@@ -1,4 +1,5 @@
 // On part d'une TodoList vide. Les commandes sont mises pour une utilisation avec windows sous WSL.
+// Les parties à côté de "//" sont des commentaires et ne doivent pas être tapées.
 
 g++ todo_sst.cpp -o todo
 
@@ -6,7 +7,7 @@ g++ todo_sst.cpp -o todo
 
 ./todo create --title Titre0 --description "Description tache 0" --priority haute
 
-//test de la création sans priorité
+//test de la création sans priorité :
 ./todo create --title Titre1 --description "Description tache 1"
 
 ./todo create --title Titre2 --description "Description tache 2" --priority haute
@@ -21,6 +22,8 @@ g++ todo_sst.cpp -o todo
 
 ./todo add --id 0 --title "Sous tache 0 de 0" --description "Desc00" // Les id changent 
 
+./todo list 
+
 //test de l'impossibilité d'une sous-tâche de sous-tâche.
 ./todo add --id 3 --title "test" --description "test" // les id ont changés, 3 est la sous tâche 0 de 1.
 
@@ -33,7 +36,7 @@ g++ todo_sst.cpp -o todo
 ./todo modify --id 5 --description "Nouvelle description tache 2" --priority basse
 ./todo display --id 5
 
-./todo modify --id 2 --priority basse // Se répercute à la sous-tâche*
+./todo modify --id 2 --priority basse // Se répercute sur ses sous-tâches
 ./todo list
 
 ./todo modify --id 3 --priority haute // Impossible
@@ -41,17 +44,18 @@ g++ todo_sst.cpp -o todo
 ./todo remove --id 0
 ./todo list // On vérifie que les identifiants se sont bien mis à jour.
 
-/todo remove --id 1 // test du remove sur une sous-tâche.
+./todo remove --id 1 // test du remove sur une sous-tâche.
 ./todo list
 
 ./todo progress --id 0 --percent 150 // test du retour d'erreur
 ./todo progress --id 0 --percent 10 // Met à jour le statut
+./todo list
 
 ./todo comment --id 0 --text "Commentaire tache 0."
 ./todo comment --id 0 --text "Autre commentaire."
 ./todo display --id 0
 
-./todo clear
-eazad
+./todo clear // Nettoie toute la todo-list
+test
 Y
 ./todo list
